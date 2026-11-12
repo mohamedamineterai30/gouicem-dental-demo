@@ -44,6 +44,8 @@
   .empty { color: var(--muted); text-align: center; padding: 40px 0; }
   @media (max-width: 600px) { .rdv { grid-template-columns: 58px 1fr; } .acts { grid-column: 1 / -1; justify-content: flex-start; } }
 </style>
+<script src="js/acces.js"></script>
+<style>.locked body > * { display: none !important; } .locked body::before { content: "Accès privé · رابط خاص"; display: grid; place-items: center; min-height: 100vh; font: 600 18px system-ui, sans-serif; color: #5f6672; }</style>
 </head>
 <body>
 <header><b id="title">Agenda</b><button id="refresh" hidden>Actualiser</button><button id="logout" hidden>Sortir</button></header>
