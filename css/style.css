@@ -80,7 +80,9 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.06; }
 .wrap { max-width: 1120px; margin: 0 auto; padding: 48px 16px; }
 h2.h { font-size: clamp(27px, 3.4vw, 36px); margin-bottom: 22px; }
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.svc { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; display: flex; flex-direction: column; gap: 6px; }
+.svc { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column; }
+.svc > img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; }
+.svc-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
 .svc i { font-style: normal; color: var(--accent); font: 600 15px Fraunces, serif; }
 .svc b { font-size: 18px; }
 .svc p { margin: 0; color: var(--muted); font-size: 15px; flex: 1; }
@@ -135,3 +137,12 @@ footer { text-align: center; color: var(--muted); font-size: 13.5px; padding: 26
   .book { padding: 18px; }
 }
 .demo-bar { background: var(--accent); color: var(--dark); text-align: center; font-size: 13px; font-weight: 600; padding: 6px 12px; }
+.method-bg { background: var(--dark); color: #fff; }
+.method-bg h2.h { margin-bottom: 12px; }
+.quote { font: 500 21px/1.45 Fraunces, Georgia, serif; color: var(--accent); max-width: 34em; margin: 0 0 30px; }
+[dir=rtl] .quote { font-family: Tajawal, sans-serif; }
+.method { list-style: none; counter-reset: m; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.method li { counter-increment: m; border: 1px solid rgba(255, 255, 255, .16); border-radius: var(--r); padding: 20px; display: grid; gap: 6px; align-content: start; }
+.method li::before { content: counter(m); width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--accent); color: var(--accent); display: grid; place-items: center; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.method b { font-size: 17.5px; }
+.method span { color: rgba(255, 255, 255, .75); font-size: 15px; }

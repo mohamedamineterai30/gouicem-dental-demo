@@ -89,7 +89,8 @@
     $("serviceCards").replaceChildren(...C.services.map((s, i) => {
       const b = el("button", { type: "button", textContent: t().book });
       b.onclick = () => { st.service = s.id; render(); $("rdv").scrollIntoView(); };
-      return el("div", { className: "svc" }, el("i", { textContent: String(i + 1).padStart(2, "0") }), el("b", { textContent: L(s.name) }), el("p", { textContent: L(s.desc) }), b);
+      const body = el("div", { className: "svc-body" }, el("i", { textContent: String(i + 1).padStart(2, "0") }), el("b", { textContent: L(s.name) }), el("p", { textContent: L(s.desc) }), b);
+      return el("div", { className: "svc" }, ...(s.img ? [el("img", { src: s.img, alt: L(s.name), loading: "lazy" })] : []), body);
     }));
 
     const today = RDV.nowDZ().date;
@@ -125,6 +126,13 @@
       }
       $("filmTitle").textContent = L(F.title);
       $("filmText").textContent = L(F.text);
+    }
+    const M = C.method;
+    $("methodSec").hidden = !M;
+    if (M) {
+      $("methodTitle").textContent = L(M.title);
+      $("methodQuote").textContent = L(M.quote);
+      $("method").replaceChildren(...M.steps.map((s) => el("li", {}, el("b", { textContent: L(s.t) }), el("span", { textContent: L(s.d) }))));
     }
     if (C.galleryTitle) document.querySelector("#gallerySec h2").textContent = L(C.galleryTitle);
     $("gallerySec").hidden = !C.gallery.length;
